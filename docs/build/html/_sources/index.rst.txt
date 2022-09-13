@@ -14,6 +14,22 @@ Welcome to Canwest-Mountain-Flows!
    map = new OpenLayers.Map("mapdiv")
    map.addLayer(new OpenLayers.Layer.OSM());
 
+   var lonlat = new OpenLayers.LonLat( -120 ,51 )
+      .transform(
+         new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+         map.getProjectionObject()  // to spherical Mercartor Projection
+      );
+   
+   var zoom=16;
+
+   var markers = new OpenLayers.Layer.Markers( "Markers");
+   map.addLayer("markers")
+
+   markers.addMarker(new OpenLayers.Marker(lonlat));
+
+   map.setCenter (lonlat, zoom);
+   </script>
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

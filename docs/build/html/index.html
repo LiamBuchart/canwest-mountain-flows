@@ -157,6 +157,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathmd.html">Example Math</a></li>
 </ul>
 
 </div>
@@ -196,7 +197,23 @@
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 map = new OpenLayers.Map("mapdiv")
-map.addLayer(new OpenLayers.Layer.OSM());<div class="toctree-wrapper compound">
+map.addLayer(new OpenLayers.Layer.OSM());
+
+var lonlat = new OpenLayers.LonLat( -120 ,51 )
+   .transform(
+      new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+      map.getProjectionObject()  // to spherical Mercartor Projection
+   );
+
+var zoom=16;
+
+var markers = new OpenLayers.Layer.Markers( "Markers");
+map.addLayer("markers")
+
+markers.addMarker(new OpenLayers.Marker(lonlat));
+
+map.setCenter (lonlat, zoom);
+</script><div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
@@ -215,6 +232,7 @@ map.addLayer(new OpenLayers.Layer.OSM());<div class="toctree-wrapper compound">
 <li class="toctree-l2"><a class="reference internal" href="mymarkdown.html#code">Code</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="mathmd.html">Example Math</a></li>
 </ul>
 </div>
 </div>
