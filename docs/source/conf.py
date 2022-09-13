@@ -37,7 +37,9 @@ extensions = [
     "nbsphinx",
     "myst_parser",
     "sphinx_copybutton",
+    
 ]
+
 
 # use language set by highlight directive if no language is set by role
 inline_highlight_respect_highlight = False
