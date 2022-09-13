@@ -1,4 +1,4 @@
-.. canwest-mountain-flows documentation master file, created by
+.. canwest-mountain-flows master file, created by
    sphinx-quickstart on Sun Sep 11 23:30:31 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -16,7 +16,7 @@ Canwest-Mountain-Flows
 
 <div id="map"></div>
 
-   map { height: 280px; }
+map { height: 280px; }
 
 var map = L.map('map').setView([51.505, -120.09], 10)
 
