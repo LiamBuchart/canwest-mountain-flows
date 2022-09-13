@@ -32,7 +32,6 @@ extensions = ['myst_parser',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
               'nbsphinx',
-              'sphinx.ext.mathjax',
 ]
 
 
