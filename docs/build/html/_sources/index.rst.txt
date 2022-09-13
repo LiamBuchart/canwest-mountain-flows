@@ -6,6 +6,14 @@
 Welcome to Canwest-Mountain-Flows!
 ==================================================
 
+.. raw:: html
+
+   <div id="mapdiv" style="height: 200px; width: 100%"></div>
+   <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+   <script>
+   map = new OpenLayers.Map("mapdiv")
+   map.addLayer(new OpenLayers.Layer.OSM());
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

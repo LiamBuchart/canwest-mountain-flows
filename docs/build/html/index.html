@@ -192,7 +192,11 @@
         <article role="main">
           <div class="section" id="welcome-to-canwest-mountain-flows">
 <h1>Welcome to Canwest-Mountain-Flows!<a class="headerlink" href="#welcome-to-canwest-mountain-flows" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+<div id="mapdiv" style="height: 200px; width: 100%"></div>
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script>
+map = new OpenLayers.Map("mapdiv")
+map.addLayer(new OpenLayers.Layer.OSM());<div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
