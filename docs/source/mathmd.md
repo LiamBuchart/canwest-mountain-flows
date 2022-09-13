@@ -1,3 +1,4 @@
+:: math::
 # Example Math
 
 $$
