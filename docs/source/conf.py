@@ -28,17 +28,7 @@ author = 'LiamBuchart'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    "sphinx.ext.mathjax",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.coverage",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.autosectionlabel",
-    "nbsphinx",
-    "myst_parser",
-    "sphinx_copybutton",
-    
-]
+extensions = ['myst_parser']
 
 
 # use language set by highlight directive if no language is set by role
