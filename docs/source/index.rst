@@ -16,7 +16,7 @@ Canwest-Mountain-Flows
 
 <div id="map"></div>
 
-map { height: 280px; }
+#map { height: 180px; }
 
 var map = L.map('map').setView([51.505, -120.09], 10)
 
