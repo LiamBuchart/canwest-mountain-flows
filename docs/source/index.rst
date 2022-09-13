@@ -12,6 +12,7 @@ Canwest-Mountain-Flows
 
    api
    mymarkdown
+   mymath
    My Map <mymap.ipynb>
 
 

@@ -11,7 +11,7 @@
 # %%
 # This is a code cell
 import pandas as pd
-import plotly.express as pd
+#import plotly.express as pd
 
 class A():
     def one():
