@@ -12,7 +12,7 @@
         <meta name=generator content="Sphinx">
         <meta name=viewport content="width=device-width,initial-scale=1.0">
         
-        <title>Example &mdash; canwest-mountain-flows  documentation</title>
+        <title>API &mdash; canwest-mountain-flows  documentation</title>
 
         
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -58,6 +58,11 @@
                class="icon-index"
                 accesskey="I"></a>
         </li>
+      <li >
+            <a href="py-modindex.html" title="Python Module Index"
+               class="icon-modules"
+                ></a>
+        </li>
     </ul>
             </div>
             <div class="clearer"></div>
@@ -68,12 +73,6 @@
         <div class="sidebarwrapper">
             <div class="sidebar">
                     <h3><a href="index.html">Top</a></h3><nav class="localtoc">
-      <ul>
-<li><a class="reference internal" href="#">Example</a></li>
-<li><a class="reference internal" href="#notes">Notes</a></li>
-<li><a class="reference internal" href="#attributes">Attributes</a></li>
-</ul>
-
 </nav><div class="relative">
 </div>
   <h4>This Page</h4>
@@ -93,13 +92,13 @@
             <div class="document">
                 <div class="body">
                     
-    <p># -<em>- coding: utf-8 -</em>-
-“””Example NumPy style docstrings.</p>
+    <div class="section" id="module-utils.foo">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-utils.foo" title="Permalink to this headline">¶</a></h1>
+<p>Example NumPy style docstrings.</p>
 <p>This module demonstrates documentation as specified by the <a class="reference internal" href="#numpy-documentation-howto">NumPy
 Documentation HOWTO</a>. Docstrings may extend over multiple lines. Sections
 are created with a section header followed by an underline of equal length.</p>
-<div class="section" id="example">
-<h1>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Example</p>
 <p>Examples can be given using either the <code class="docutils literal notranslate"><span class="pre">Example</span></code> or <code class="docutils literal notranslate"><span class="pre">Examples</span></code>
 sections. Sections support any reStructuredText formatting, including
 literal blocks:</p>
@@ -109,31 +108,32 @@ literal blocks:</p>
 <p>Section breaks are created with two blank lines. Section breaks are also
 implicitly created anytime a new section starts. Section bodies <em>may</em> be
 indented:</p>
-</div>
-<div class="section" id="notes">
-<h1>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>This is an example of an indented section. It’s like any other section,
+<p class="rubric">Notes</p>
+<p>This is an example of an indented section. It’s like any other section,
 but the body is indented to help it stand out from surrounding text.</p>
-</div></blockquote>
 <p>If a section is indented, then a section break is created by
 resuming unindented text.</p>
-</div>
-<div class="section" id="attributes">
-<h1>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h1>
-<dl>
-<dt>module_level_variable1<span class="classifier">int</span></dt><dd><p>Module level variables may be documented in either the <code class="docutils literal notranslate"><span class="pre">Attributes</span></code>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.foo.module_level_variable1">
+<span class="sig-prename descclassname"><span class="pre">utils.foo.</span></span><span class="sig-name descname"><span class="pre">module_level_variable1</span></span><a class="headerlink" href="#utils.foo.module_level_variable1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Module level variables may be documented in either the <code class="docutils literal notranslate"><span class="pre">Attributes</span></code>
 section of the module docstring, or in an inline docstring immediately
 following the variable.</p>
 <p>Either form is acceptable, but the two should not be mixed. Choose
 one convention to document module level variables and be consistent
 with it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+
 <p><a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt</a></p>
-<p>“””</p>
-<dl>
-<dt>def module_level_function(param1, param2=None, <a href="#id1"><span class="problematic" id="id2">*</span></a>args, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs):</dt><dd><p>“””This is an example of a module level function.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.foo.module_level_function">
+<span class="sig-prename descclassname"><span class="pre">utils.foo.</span></span><span class="sig-name descname"><span class="pre">module_level_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.foo.module_level_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an example of a module level function.</p>
 <p>Function parameters should be documented in the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> section.
 The name of each parameter is required. The type and description of each
 parameter is optional, but should be included if not obvious.</p>
@@ -151,18 +151,17 @@ they should be listed as <code class="docutils literal notranslate"><span class=
     <span class="n">descriptions</span><span class="o">.</span>
 </pre></div>
 </div>
-<dl>
-<dt>param1<span class="classifier">int</span></dt><dd><p>The first parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param1</strong> (<em>int</em>) – The first parameter.</p></li>
+<li><p><strong>param2</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – The second parameter.</p></li>
+<li><p><strong>*args</strong> – Variable length argument list.</p></li>
+<li><p><strong>**kwargs</strong> – Arbitrary keyword arguments.</p></li>
+</ul>
 </dd>
-<dt>param2<span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional</span></dt><dd><p>The second parameter.</p>
-</dd>
-<dt><a href="#id5"><span class="problematic" id="id6">*</span></a>args</dt><dd><p>Variable length argument list.</p>
-</dd>
-<dt><a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs</dt><dd><p>Arbitrary keyword arguments.</p>
-</dd>
-</dl>
-<dl>
-<dt>bool</dt><dd><p>True if successful, False otherwise.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>True if successful, False otherwise.</p>
 <p>The return type is not optional. The <code class="docutils literal notranslate"><span class="pre">Returns</span></code> section may span
 multiple lines and paragraphs. Following lines should be indented to
 match the first line of the description.</p>
@@ -174,23 +173,21 @@ including literal blocks:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AttributeError</strong> – The <code class="docutils literal notranslate"><span class="pre">Raises</span></code> section is a list of all exceptions
+    that are relevant to the interface.</p></li>
+<li><p><strong>ValueError</strong> – If <cite>param2</cite> is equal to <cite>param1</cite>.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="simple">
-<dt>AttributeError</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">Raises</span></code> section is a list of all exceptions
-that are relevant to the interface.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If <cite>param2</cite> is equal to <cite>param1</cite>.</p>
-</dd>
-</dl>
-<p>“””
-if param1 == param2:</p>
-<blockquote>
-<div><p>raise ValueError(‘param1 may not be equal to param2’)</p>
-</div></blockquote>
-<p>return True</p>
-</dd>
-</dl>
+</dd></dl>
+
 </div>
 
     <div id="raise-top"></div>
