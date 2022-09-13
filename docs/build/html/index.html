@@ -191,29 +191,28 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="welcome-to-canwest-mountain-flows">
-<h1>Welcome to Canwest-Mountain-Flows!<a class="headerlink" href="#welcome-to-canwest-mountain-flows" title="Permalink to this headline">#</a></h1>
-<div id="mapdiv" style="height: 200px; width: 100%"></div>
-<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-<script>
-map = new OpenLayers.Map("mapdiv")
-map.addLayer(new OpenLayers.Layer.OSM());
-
-var lonlat = new OpenLayers.LonLat( -120 ,51 )
-   .transform(
-      new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-      map.getProjectionObject()  // to spherical Mercartor Projection
-   );
-
-var zoom=16;
-
-var markers = new OpenLayers.Layer.Markers( "Markers");
-map.addLayer("markers")
-
-markers.addMarker(new OpenLayers.Marker(lonlat));
-
-map.setCenter (lonlat, zoom);
-</script><div class="toctree-wrapper compound">
+          <div class="section" id="canwest-mountain-flows">
+<h1>Canwest-Mountain-Flows<a class="headerlink" href="#canwest-mountain-flows" title="Permalink to this headline">#</a></h1>
+<dl class="simple">
+<dt>&lt;link rel=”stylesheet” href=”<a class="reference external" href="https://unpkg.com/leaflet&#64;1.8.0/dist/leaflet.css">https://unpkg.com/leaflet&#64;1.8.0/dist/leaflet.css</a>”</dt><dd><p>integrity=”sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==”
+crossorigin=””/&gt;</p>
+</dd>
+<dt>&lt;link rel=”stylesheet” href=”<a class="reference external" href="https://unpkg.com/leaflet&#64;1.8.0/dist/leaflet.css">https://unpkg.com/leaflet&#64;1.8.0/dist/leaflet.css</a>”</dt><dd><p>integrity=”sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==”
+crossorigin=””/&gt;</p>
+</dd>
+</dl>
+<p>&lt;div id=”map”&gt;&lt;/div&gt;</p>
+<p>#map { height: 180px; }</p>
+<p>var map = L.map(‘map’).setView([51.505, -120.09], 10)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>L.tileLayer(‘<a class="reference external" href="https://tile.openstreetmap.org">https://tile.openstreetmap.org</a>/{z}/{x}/{y}.png’, {</dt><dd><p>maxZoom: 19,
+attribution: ‘© OpenStreetMap’
+}).addTo(map);</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>

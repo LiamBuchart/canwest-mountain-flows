@@ -3,32 +3,27 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Canwest-Mountain-Flows!
+Canwest-Mountain-Flows
 ==================================================
 
-.. raw:: html
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
 
-   <div id="mapdiv" style="height: 200px; width: 100%"></div>
-   <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-   <script>
-   map = new OpenLayers.Map("mapdiv")
-   map.addLayer(new OpenLayers.Layer.OSM());
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
 
-   var lonlat = new OpenLayers.LonLat( -120 ,51 )
-      .transform(
-         new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-         map.getProjectionObject()  // to spherical Mercartor Projection
-      );
-   
-   var zoom=16;
+<div id="map"></div>
 
-   var markers = new OpenLayers.Layer.Markers( "Markers");
-   map.addLayer("markers")
+#map { height: 180px; }
 
-   markers.addMarker(new OpenLayers.Marker(lonlat));
+var map = L.map('map').setView([51.505, -120.09], 10)
 
-   map.setCenter (lonlat, zoom);
-   </script>
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+   maxZoom: 19,
+   attribution: '© OpenStreetMap'
+   }).addTo(map);
 
 .. toctree::
    :maxdepth: 2
