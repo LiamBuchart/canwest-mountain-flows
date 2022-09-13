@@ -1,3 +1,4 @@
+:: math::
 # Example Markdown
 
 ## h2 Heading
