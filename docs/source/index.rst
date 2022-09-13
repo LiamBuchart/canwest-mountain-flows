@@ -12,6 +12,7 @@ Welcome to Canwest-Mountain-Flows!
 
    api
    mymarkdown
+   mathmd
 
 
 Flows
