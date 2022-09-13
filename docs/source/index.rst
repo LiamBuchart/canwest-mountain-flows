@@ -16,7 +16,7 @@ Canwest-Mountain-Flows
 
 <div id="map"></div>
 
-#map { height: 180px; }
+   map { height: 280px; }
 
 var map = L.map('map').setView([51.505, -120.09], 10)
 
@@ -27,14 +27,13 @@ var map = L.map('map').setView([51.505, -120.09], 10)
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Flows:
 
    api
    mymarkdown
-   mathmd
 
 
-Flows
+Search
 ==================
 
 * :ref:`genindex`
