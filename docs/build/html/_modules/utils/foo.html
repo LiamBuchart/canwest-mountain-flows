@@ -2,12 +2,13 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.06.21"/><title>Index - canwest-mountain-flows documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.06.21"/>
+        <title>utils.foo - canwest-mountain-flows documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -121,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">canwest-mountain-flows  documentation</div></a>
+      <a href="../../index.html"><div class="brand">canwest-mountain-flows  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -141,12 +142,12 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
   <span class="sidebar-brand-text">canwest-mountain-flows  documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -154,8 +155,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mymarkdown.html">Example Markdown</a></li>
 </ul>
 
 </div>
@@ -189,46 +190,116 @@
           </label>
         </div>
         <article role="main">
-          
-<section class="genindex-section">
-  <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#M"><strong>M</strong></a> | <a href="#U"><strong>U</strong></a></div>
-</section>
-<section id="M" class="genindex-section">
-  <h2>M</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li>
-    module
+          <h1>Source code for utils.foo</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Example NumPy style docstrings.</span>
 
-        <ul>
-          <li><a href="api.html#module-utils.foo">utils.foo</a>
-</li>
-        </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api.html#utils.foo.module_level_function">module_level_function() (in module utils.foo)</a>
-</li>
-    </ul></td>
-  </tr></table>
-</section>
+<span class="sd">This module demonstrates documentation as specified by the `NumPy</span>
+<span class="sd">Documentation HOWTO`_. Docstrings may extend over multiple lines. Sections</span>
+<span class="sd">are created with a section header followed by an underline of equal length.</span>
 
-<section id="U" class="genindex-section">
-  <h2>U</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li>
-    utils.foo
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">Examples can be given using either the ``Example`` or ``Examples``</span>
+<span class="sd">sections. Sections support any reStructuredText formatting, including</span>
+<span class="sd">literal blocks::</span>
 
-        <ul>
-          <li><a href="api.html#module-utils.foo">module</a>
-</li>
-        </ul></li>
-    </ul></td>
-  </tr></table>
-</section>
+<span class="sd">    $ python example_numpy.py</span>
 
 
+<span class="sd">Section breaks are created with two blank lines. Section breaks are also</span>
+<span class="sd">implicitly created anytime a new section starts. Section bodies *may* be</span>
+<span class="sd">indented:</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">    This is an example of an indented section. It&#39;s like any other section,</span>
+<span class="sd">    but the body is indented to help it stand out from surrounding text.</span>
+
+<span class="sd">If a section is indented, then a section break is created by</span>
+<span class="sd">resuming unindented text.</span>
+
+<span class="sd">Attributes</span>
+<span class="sd">----------</span>
+<span class="sd">module_level_variable1 : int</span>
+<span class="sd">    Module level variables may be documented in either the ``Attributes``</span>
+<span class="sd">    section of the module docstring, or in an inline docstring immediately</span>
+<span class="sd">    following the variable.</span>
+
+<span class="sd">    Either form is acceptable, but the two should not be mixed. Choose</span>
+<span class="sd">    one convention to document module level variables and be consistent</span>
+<span class="sd">    with it.</span>
+
+
+<span class="sd">.. _NumPy Documentation HOWTO:</span>
+<span class="sd">https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="module_level_function"><a class="viewcode-back" href="../../api.html#utils.foo.module_level_function">[docs]</a><span class="k">def</span> <span class="nf">module_level_function</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is an example of a module level function.</span>
+
+<span class="sd">    Function parameters should be documented in the ``Parameters`` section.</span>
+<span class="sd">    The name of each parameter is required. The type and description of each</span>
+<span class="sd">    parameter is optional, but should be included if not obvious.</span>
+
+<span class="sd">    If \*args or \*\*kwargs are accepted,</span>
+<span class="sd">    they should be listed as ``*args`` and ``**kwargs``.</span>
+
+<span class="sd">    The format for a parameter is::</span>
+
+<span class="sd">        name : type</span>
+<span class="sd">            description</span>
+
+<span class="sd">            The description may span multiple lines. Following lines</span>
+<span class="sd">            should be indented to match the first line of the description.</span>
+<span class="sd">            The &quot;: type&quot; is optional.</span>
+
+<span class="sd">            Multiple paragraphs are supported in parameter</span>
+<span class="sd">            descriptions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    param1 : int</span>
+<span class="sd">        The first parameter.</span>
+<span class="sd">    param2 : :obj:`str`, optional</span>
+<span class="sd">        The second parameter.</span>
+<span class="sd">    *args</span>
+<span class="sd">        Variable length argument list.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Arbitrary keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if successful, False otherwise.</span>
+
+<span class="sd">        The return type is not optional. The ``Returns`` section may span</span>
+<span class="sd">        multiple lines and paragraphs. Following lines should be indented to</span>
+<span class="sd">        match the first line of the description.</span>
+
+<span class="sd">        The ``Returns`` section supports any reStructuredText formatting,</span>
+<span class="sd">        including literal blocks::</span>
+
+<span class="sd">            {</span>
+<span class="sd">                &#39;param1&#39;: param1,</span>
+<span class="sd">                &#39;param2&#39;: param2</span>
+<span class="sd">            }</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    AttributeError</span>
+<span class="sd">        The ``Raises`` section is a list of all exceptions</span>
+<span class="sd">        that are relevant to the interface.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If `param2` is equal to `param1`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">param1</span> <span class="o">==</span> <span class="n">param2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;param1 may not be equal to param2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+</pre></div>
         </article>
       </div>
       <footer>
@@ -262,10 +333,10 @@
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
     </body>
 </html>
