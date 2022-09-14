@@ -8,8 +8,6 @@ Canwest-Mountain-Flows
 
 .. math::
 
-   f(x)=\int_{0}^{x} f^{\prime}(t) d t
-
 .. toctree::
    :maxdepth: 2
    :caption: Flows:
