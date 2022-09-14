@@ -64,3 +64,8 @@ html_static_path = ['_static']
 
 # something I found online to help me
 numpydoc_show_class_members = False
+
+# get auto equation numbering
+mathjax_config = {
+    'TeX': {'equationNumbers': {'autoNumber': 'AMS', 'useLabelIds': True}},
+}
