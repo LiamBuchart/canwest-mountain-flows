@@ -6,6 +6,8 @@
 Canwest-Mountain-Flows
 ==================================================
 
+.. math::
+
 .. toctree::
    :maxdepth: 2
    :caption: Flows:
