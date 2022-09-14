@@ -105,3 +105,7 @@ return bar++;
 
 console.log(foo(5));
 ```
+
+$$
+P=\rho R T
+$$
