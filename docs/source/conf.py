@@ -29,11 +29,11 @@ author = 'LiamBuchart'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['myst_parser',
+              'sphinx.ext.mathjax',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
               'nbsphinx',
 ]
-
 
 # use language set by highlight directive if no language is set by role
 inline_highlight_respect_highlight = False
