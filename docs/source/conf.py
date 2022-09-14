@@ -32,6 +32,11 @@ extensions = ['myst_parser',
               'sphinx.ext.mathjax',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
+              'jupyter_sphinx.execute',
+              'sphinx.ext.coverage',
+              'sphinx.ext.napoleon',
+              'sphinx.ext.autosectionlabel',
+              'sphinx_copybutton',
 ]
 
 # mathjax fix
@@ -64,7 +69,7 @@ html_theme = 'furo'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# something I found online to help me
+# something I found online to help me read jupyter notebooks
 numpydoc_show_class_members = False
 
 # get auto equation numbering
