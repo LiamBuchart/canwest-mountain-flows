@@ -32,8 +32,10 @@ extensions = ['myst_parser',
               'sphinx.ext.mathjax',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
-              'nbsphinx',
 ]
+
+# mathjax fix
+mathjax_path="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 
 # use language set by highlight directive if no language is set by role
 inline_highlight_respect_highlight = False

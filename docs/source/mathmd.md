@@ -1,3 +1,5 @@
-# Test the Math
+# Test the Math Again Take 2
 
-$\text{e}^{i\pi} = -1$
+{math}`$\text{e}^{i\pi} = -1$`
+
+Dear god please work
