@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Inline Math" href="mathmd.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="API" href="api.html" /><link rel="prev" title="Canwest-Mountain-Flows" href="index.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.06.21"/>
         <title>A Markdown cell - canwest-mountain-flows documentation</title>
@@ -156,10 +156,11 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Flows:</span></p>
 <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">A Markdown cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Pull-Data-from-the-native-land.ca-API">Pull Data from the native-land.ca API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathmd.html">Inline Math</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">My Map</a></li>
 </ul>
 
 </div>
@@ -458,28 +459,49 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Imports</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="Pull-Data-from-the-native-land.ca-API">
+<h1>Pull Data from the native-land.ca API<a class="headerlink" href="#Pull-Data-from-the-native-land.ca-API" title="Permalink to this headline">#</a></h1>
+<p>Territory and Treaty overlays come from Native Land Digital native-land.ca</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">122</span><span class="p">],</span>
-                    <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="n">folium</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="s1">&#39;Stamen Terrain&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">my_map</span><span class="p">)</span>
-<span class="n">my_map</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">())</span>
-
-<span class="n">my_map</span> <span class="c1"># display map</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_API</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://native-land.ca/api/index.php?maps=territories,treaties&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response_API</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response_API</span><span class="o">.</span><span class="n">text</span>
+<span class="n">parse_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+200
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">49.5236</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.6750</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -508,7 +530,7 @@ div.rendered_html tbody tr:hover {
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_6e4ad4f928745bbc514df41c35917da8 {
+                #map_f83d2c4fee6bd218703e024181fe54f6 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -520,17 +542,17 @@ div.rendered_html tbody tr:hover {
 &lt;/head&gt;
 &lt;body&gt;
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_6e4ad4f928745bbc514df41c35917da8&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_f83d2c4fee6bd218703e024181fe54f6&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
-            var map_6e4ad4f928745bbc514df41c35917da8 = L.map(
-                &quot;map_6e4ad4f928745bbc514df41c35917da8&quot;,
+            var map_f83d2c4fee6bd218703e024181fe54f6 = L.map(
+                &quot;map_f83d2c4fee6bd218703e024181fe54f6&quot;,
                 {
-                    center: [50.0, -122.0],
+                    center: [49.5236, -122.675],
                     crs: L.CRS.EPSG3857,
-                    zoom: 4,
+                    zoom: 8,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -540,32 +562,10 @@ div.rendered_html tbody tr:hover {
 
 
 
-            var tile_layer_307c3a58c04dfc56c7760e0b9f28915f = L.tileLayer(
+            var tile_layer_e6dcbc127bcd40e56199c1b4cfae3800 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_6e4ad4f928745bbc514df41c35917da8);
-
-
-            var tile_layer_7579a69b51d2a37c31891215b105165a = L.tileLayer(
-                &quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&quot;,
-                {&quot;attribution&quot;: &quot;Map tiles by \u003ca href=\&quot;http://stamen.com\&quot;\u003eStamen Design\u003c/a\u003e, under \u003ca href=\&quot;http://creativecommons.org/licenses/by/3.0\&quot;\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://creativecommons.org/licenses/by-sa/3.0\&quot;\u003eCC BY SA\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_6e4ad4f928745bbc514df41c35917da8);
-
-
-            var layer_control_21bd4e4eee4ad8ff6bc5fb62afeaf858 = {
-                base_layers : {
-                    &quot;openstreetmap&quot; : tile_layer_307c3a58c04dfc56c7760e0b9f28915f,
-                    &quot;stamenterrain&quot; : tile_layer_7579a69b51d2a37c31891215b105165a,
-                },
-                overlays :  {
-                },
-            };
-            L.control.layers(
-                layer_control_21bd4e4eee4ad8ff6bc5fb62afeaf858.base_layers,
-                layer_control_21bd4e4eee4ad8ff6bc5fb62afeaf858.overlays,
-                {&quot;autoZIndex&quot;: true, &quot;collapsed&quot;: true, &quot;position&quot;: &quot;topright&quot;}
-            ).addTo(map_6e4ad4f928745bbc514df41c35917da8);
-            tile_layer_7579a69b51d2a37c31891215b105165a.remove();
+            ).addTo(map_f83d2c4fee6bd218703e024181fe54f6);
 
 &lt;/script&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
 </div>
@@ -576,15 +576,23 @@ div.rendered_html tbody tr:hover {
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="mathmd.html">
+          <a class="next-page" href="api.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">API</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Inline Math</div>
+                <div class="title">Home</div>
                 
               </div>
             </a>

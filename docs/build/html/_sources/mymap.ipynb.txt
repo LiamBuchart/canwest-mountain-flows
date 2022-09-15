@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "ccda5616",
+   "id": "eb5096ef",
    "metadata": {
     "lines_to_next_cell": 2
    },
@@ -14,29 +14,52 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "9f25c1e3",
+   "id": "28d59437",
    "metadata": {},
    "outputs": [],
    "source": [
-    "# # Imports\n",
+    "# Imports\n",
     "import pandas as pd\n",
-    "import folium"
+    "import folium\n",
+    "\n",
+    "import requests\n",
+    "import json"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "58336db5",
+   "metadata": {},
+   "source": [
+    "# Pull Data from the native-land.ca API\n",
+    "Territory and Treaty overlays come from Native Land Digital\n",
+    "native-land.ca"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "f1b6bd12",
+   "id": "3d55f488",
    "metadata": {},
    "outputs": [],
    "source": [
-    "my_map = folium.Map(location=[50, -122], \n",
-    "                    zoom_start=4)\n",
-    "\n",
-    "folium.TileLayer('Stamen Terrain').add_to(my_map)\n",
-    "my_map.add_child(folium.map.LayerControl())\n",
-    "\n",
-    "my_map # display map"
+    "response_API = requests.get(\"https://native-land.ca/api/index.php?maps=territories,treaties\")\n",
+    "print(response_API.status_code)\n",
+    "data = response_API.text\n",
+    "parse_json = json.loads(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2d1c709e",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "outputs": [],
+   "source": [
+    "m = folium.Map(location=[49.5236, -122.6750], zoom_start=8)\n",
+    "m"
    ]
   }
  ],
@@ -45,9 +68,6 @@
    "cell_metadata_filter": "-all",
    "main_language": "python",
    "notebook_metadata_filter": "-all"
-  },
-  "language_info": {
-   "name": "python"
   }
  },
  "nbformat": 4,

@@ -12,10 +12,10 @@ Canwest-Mountain-Flows
    :maxdepth: 2
    :caption: Flows:
 
+   Map <mymap.ipynb>
    api
    mymarkdown
    mathmd
-   My Map <mymap.ipynb>
 
 
 Search
