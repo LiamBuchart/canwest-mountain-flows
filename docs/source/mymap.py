@@ -9,20 +9,10 @@
 
 
 # %%
-# This is a code cell
+# Imports
 import pandas as pd
-import plotly.express as pd
+import folium
 
-class A():
-    def one():
-        return 1
-
-    def two():
-        return 2
-
-# %%
-# This is another code cell
-import numpy as np
-
-mylist = np.arange(0,10)
-print(f"this is my list {mylist}")
+#%%
+m = folium.Map(location=[49.5236, -122.6750], zoom_start=8)
+m
