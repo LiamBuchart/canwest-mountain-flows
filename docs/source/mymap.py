@@ -1,14 +1,9 @@
 # %% [markdown]
-
-# %% [markdown]
 # # A Markdown cell
 # - You can do all the fun stuff markdown has to offer
 
+
 # %% [markdown]
-# ## Another Markdown cell
-
-
-# %%
 # Imports
 import pandas as pd
 import folium
