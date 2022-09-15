@@ -3,7 +3,7 @@
 # - You can do all the fun stuff markdown has to offer
 
 
-# %% [markdown]
+#%%
 # Imports
 import pandas as pd
 import folium

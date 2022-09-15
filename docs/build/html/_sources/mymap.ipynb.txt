@@ -2,62 +2,36 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "aa58d625",
-   "metadata": {},
-   "source": []
-  },
-  {
-   "cell_type": "markdown",
-   "id": "5a3c2968",
-   "metadata": {},
+   "id": "ccda5616",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
    "source": [
     "# A Markdown cell\n",
     "- You can do all the fun stuff markdown has to offer"
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "245dba86",
-   "metadata": {
-    "lines_to_next_cell": 2
-   },
-   "source": [
-    "## Another Markdown cell"
-   ]
-  },
-  {
    "cell_type": "code",
    "execution_count": null,
-   "id": "5b4dc223",
-   "metadata": {
-    "lines_to_next_cell": 1
-   },
-   "outputs": [],
-   "source": [
-    "# This is a code cell\n",
-    "import pandas as pd\n",
-    "import plotly.express as pd\n",
-    "\n",
-    "class A():\n",
-    "    def one():\n",
-    "        return 1\n",
-    "\n",
-    "    def two():\n",
-    "        return 2"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "daae533a",
+   "id": "9f25c1e3",
    "metadata": {},
    "outputs": [],
    "source": [
-    "# This is another code cell\n",
-    "import numpy as np\n",
-    "\n",
-    "mylist = np.arange(0,10)\n",
-    "print(f\"this is my list {mylist}\")"
+    "# # Imports\n",
+    "import pandas as pd\n",
+    "import folium"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f1b6bd12",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "m = folium.Map(location=[49.5236, -122.6750], zoom_start=8)\n",
+    "m"
    ]
   }
  ],
