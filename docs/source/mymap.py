@@ -6,8 +6,11 @@
 #%%
 # Imports
 import pandas as pd
+import geopandas as gpd
 import folium
 import numpy as np
+from shapely.geometry import Polygon
+from shapely.wkt import loads
 
 import requests
 import json
@@ -72,16 +75,45 @@ territory = {
              "features": response_API
 }
 
-print(territory.items()) 
-print(territory)
+#%%
+# load the file into a format for plotting
 
-for ii in range(0, len(parse_json)): 
-  try:
-    q = 1
-    #print(list(parse_json[ii].values())[2]["Name"])
-  except:
-    pass
+#print(list(parse_json)[3].items())
 
+# load the json file in a geopandas dataframe thats easier to work with
+gdf = gpd.GeoDataFrame(parse_json)
+print("The dataframe: ")
+#print(type(gdf["geometry"]))
+#print(gdf["geometry"].astype("string").iloc[0])
+#gdf = gdf["geometry"].apply(loads)
+#gdf["geometry"] = gdf["geometry"].astype("string")
+gdf = gdf.iloc[0]
+print(gdf)
+gdf.crs = "epsg:4326"
+gdf.to_crs = {'init' :'epsg:4326'}
+#geom = np.array(list(gdf["geometry"].values()))
+#gdf["geometry"] = geom
+#print(gdf)
+#gdf["geometry"] = list(gdf["geometry"].values())[0])
+#gdf["geometry"] = gdf["geometry"].astype("string") #, dtype="string" #list(gdf["geometry"].values())
+#print(gdf["geometry"])
+#geom = list(gdf["geometry"].values())
+#print("NEXT")
+#print(np.array(geom[0]))
+#print(type(gdf["geometry"]), type(geom[0]), len(geom)) 
+#gdf2 = gdf.set_geometry("geometry")                                             
+#gdf = gdf["geometry"].apply(loads)
+
+
+#print(gdf.columns)
+#print(gdf.head())
+#poly = Polygon(list(gdf["geometry"]))
+#gdf.set_geometry(Polygon(gdf["geometry"]))
+
+
+#gdf = gpd.GeoDataFrame(data).set_geometry('geometry')
+
+#print(gdf2)
 
 #%% [markdown]
 # # Make the Map
@@ -101,37 +133,102 @@ tr = folium.TileLayer("Stamen Terrain",
                  name="Terrain").add_to(m)
 
 # add the native-land overlay
-folium.GeoJson(territory,
-               name="Territories").add_to(m)
+#print(type(folium.Popup(list( parse_json[ii].values() )[2]["Name"])))
+
+# data
+folium.GeoJson(gdf,
+               name="Territories",
+               show=False,
+               popup="Test",
+               zoom_on_click=True).add_to(m)
+
 
 # loop through the native-land data and load data by creating polygon and popup
-for ii in range(0, len(parse_json)):
-    try:
-      #folium.GeoJson(data, 
-      #               name="Territories").add_to(m)
-      
-      t = folium.GeoJson(parse_json[ii].values())
-      t.add_child(folium.Popup(list( parse_json[ii].values() )[2]["Name"]))
-      t.add_to(m)
-    except:
-      pass
+#for ii in range(0, len(parse_json)):
+#    try:
+#      #folium.GeoJson(data, 
+#      #               name="Territories").add_to(m)
+#      
+#      t = folium.GeoJson(list(parse_json[ii].values()))
+#      t.add_child(folium.Popup(list( parse_json[ii].values() )[2]["Name"]))
+#      t.add_to(m)
+#    except:
+#      pass
 
 # add the layers to toggle
 folium.LayerControl().add_to(m)
 
 # display
 m
-# %%
-# Search GitHub's repositories for requests
-response = requests.get(
-    'https://native-land.ca/wp-json/nativeland/v1/api/index.php',
-    params={'q': 'requests+language:python'},
-)
 
-# Inspect some attributes of the `requests` repository
-json_response = response.json()
-print(json_response)
-repository = json_response['items'][0]
-print(f'Repository name: {repository["name"]}')  # Python 3.6+
-print(f'Repository description: {repository["description"]}')  # Python 3.6+
+
+
+
+
+
+
+
+
+
+
+
+# %%
+# sort out geometry issues
+import matplotlib.pyplot as plt
+from shapely.geometry import shape, GeometryCollection
+
+#with open(data) as f:
+#  features = json.load(f)["features"]
+num = 1
+print(num)
+df = pd.DataFrame(parse_json)
+df = df.iloc[num]
+
+#print(df.columns)
+#print(df.dtypes)
+df["geometry"] = list(df["geometry"].values())[0]
+#print(df["geometry"])
+#df["geometry"] = list(df["geometry"].values())[0]
+#df["geometry"] = df["geometry"].astype("float")
+#df.crs = "epsg:4326"
+#df.to_crs = {'init' :'epsg:4326'}
+#print(df.head())
+#print(df.dtypes)
+
+geo: dict = {"type": "Polygon",
+             "coordinates": df["geometry"]}
+
+print(list(geo.values())[1])
+polygon: Polygon = shape(geo)
+
+C = polygon.exterior.coords.xy
+
+#print(C)
+
+# initialize a map
+m = folium.Map(location=[55, -122], 
+               zoom_start=4, 
+               tiles="openstreetmap",
+               name="Road Map")
+
+shapesLayer = folium.FeatureGroup(name="Territories").add_to(m)
+
+folium.PolyLine(list(geo.values())[1],
+                color="red",
+                weight=5).add_to(shapesLayer)
+
+folium.Polygon(list(geo.values())[1],
+               color="orange",
+               weight=5,
+               fill=True,
+               fill_color="orange",
+               fill_opacity=0.4).add_to(shapesLayer)
+
+# display the layer switcher widget
+folium.LayerControl().add_to(m)
+
+m
+
+# save the map object to be displayed on the home page
+m.save('canwest_flows.html')
 # %%

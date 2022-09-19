@@ -79,3 +79,6 @@ numpydoc_show_class_members = False
 mathjax_config = {
     'TeX': {'equationNumbers': {'autoNumber': 'AMS', 'useLabelIds': True}},
 }
+
+# sphinx told me to add this 
+nbsphinx_allow_errors = True

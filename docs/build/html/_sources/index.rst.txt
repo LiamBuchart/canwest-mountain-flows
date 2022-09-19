@@ -6,6 +6,10 @@
 Canwest-Mountain-Flows
 ==================================================
 
+++++
+include::canwest_flows.html[]
+++++
+
 .. math::
 
 .. toctree::

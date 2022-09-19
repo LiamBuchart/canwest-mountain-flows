@@ -158,6 +158,7 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">A Markdown cell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#Pull-Data-from-the-native-land.ca-API">Pull Data from the native-land.ca API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Make-the-Map">Make the Map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathmd.html">Inline Math</a></li>
@@ -461,25 +462,129 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">folium</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="kn">from</span> <span class="nn">shapely.wkt</span> <span class="kn">import</span> <span class="n">loads</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">geojson</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="Pull-Data-from-the-native-land.ca-API">
 <h1>Pull Data from the native-land.ca API<a class="headerlink" href="#Pull-Data-from-the-native-land.ca-API" title="Permalink to this headline">#</a></h1>
-<p>Territory and Treaty overlays come from Native Land Digital native-land.ca</p>
-<div class="nbinput docutils container">
+<div class="section" id="Territory-and-Name-overlays-come-from-Native-Land-Digital">
+<h2>Territory and Name overlays come from Native Land Digital<a class="headerlink" href="#Territory-and-Name-overlays-come-from-Native-Land-Digital" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="native-land.ca">blue_text</a></p>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_API</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://native-land.ca/api/index.php?maps=territories,treaties&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response_API</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://native-land.ca/wp-json/nativeland/v1/api/index.php&quot;</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;maps&quot;</span> <span class="p">:</span> <span class="s2">&quot;territories&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;polygon_geojson&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">[</span>
+                <span class="o">-</span><span class="mf">113.5</span><span class="p">,</span>
+                <span class="mf">61.25</span>
+                <span class="p">],</span>
+                <span class="p">[</span>
+                <span class="o">-</span><span class="mi">160</span><span class="p">,</span>
+                <span class="mf">61.25</span>
+                <span class="p">],</span>
+                <span class="p">[</span>
+                <span class="o">-</span><span class="mi">160</span><span class="p">,</span>
+                <span class="mf">47.25</span>
+                <span class="p">],</span>
+                <span class="p">[</span>
+                <span class="o">-</span><span class="mf">113.5</span><span class="p">,</span>
+                <span class="mf">47.25</span>
+                <span class="p">],</span>
+          <span class="p">]</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download and convert to json</span>
+<span class="n">response_API</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response_API</span><span class="o">.</span><span class="n">text</span>
+
+<span class="c1">#print(data)</span>
 <span class="n">parse_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># geojson</span>
+<span class="n">territory</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">response_API</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the file into a format for plotting</span>
+
+<span class="c1">#print(list(parse_json)[3].items())</span>
+
+<span class="c1"># load the json file in a geopandas dataframe thats easier to work with</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">parse_json</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The dataframe: &quot;</span><span class="p">)</span>
+<span class="c1">#print(type(gdf[&quot;geometry&quot;]))</span>
+<span class="c1">#print(gdf[&quot;geometry&quot;].astype(&quot;string&quot;).iloc[0])</span>
+<span class="c1">#gdf = gdf[&quot;geometry&quot;].apply(loads)</span>
+<span class="c1">#gdf[&quot;geometry&quot;] = gdf[&quot;geometry&quot;].astype(&quot;string&quot;)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s2">&quot;epsg:4326&quot;</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;init&#39;</span> <span class="p">:</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">}</span>
+<span class="c1">#geom = np.array(list(gdf[&quot;geometry&quot;].values()))</span>
+<span class="c1">#gdf[&quot;geometry&quot;] = geom</span>
+<span class="c1">#print(gdf)</span>
+<span class="c1">#gdf[&quot;geometry&quot;] = list(gdf[&quot;geometry&quot;].values())[0])</span>
+<span class="c1">#gdf[&quot;geometry&quot;] = gdf[&quot;geometry&quot;].astype(&quot;string&quot;) #, dtype=&quot;string&quot; #list(gdf[&quot;geometry&quot;].values())</span>
+<span class="c1">#print(gdf[&quot;geometry&quot;])</span>
+<span class="c1">#geom = list(gdf[&quot;geometry&quot;].values())</span>
+<span class="c1">#print(&quot;NEXT&quot;)</span>
+<span class="c1">#print(np.array(geom[0]))</span>
+<span class="c1">#print(type(gdf[&quot;geometry&quot;]), type(geom[0]), len(geom))</span>
+<span class="c1">#gdf2 = gdf.set_geometry(&quot;geometry&quot;)</span>
+<span class="c1">#gdf = gdf[&quot;geometry&quot;].apply(loads)</span>
+
+
+<span class="c1">#print(gdf.columns)</span>
+<span class="c1">#print(gdf.head())</span>
+<span class="c1">#poly = Polygon(list(gdf[&quot;geometry&quot;]))</span>
+<span class="c1">#gdf.set_geometry(Polygon(gdf[&quot;geometry&quot;]))</span>
+
+
+<span class="c1">#gdf = gpd.GeoDataFrame(data).set_geometry(&#39;geometry&#39;)</span>
+
+<span class="c1">#print(gdf2)</span>
 </pre></div>
 </div>
 </div>
@@ -488,86 +593,194 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-200
+The dataframe:
+id                             d6479d196b7bb5f5408fd83ff93c9e71
+type                                                    Feature
+properties    {&#39;Name&#39;: &#39;Ngemba&#39;, &#39;ID&#39;: 37121, &#39;Slug&#39;: &#39;ngemb...
+geometry      {&#39;coordinates&#39;: [[[145.77743021, -30.71123253]...
+Name: 0, dtype: object
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Make-the-Map">
+<h1>Make the Map<a class="headerlink" href="#Make-the-Map" title="Permalink to this headline">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize a map</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="o">-</span><span class="mi">122</span><span class="p">],</span>
+               <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+               <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;openstreetmap&quot;</span><span class="p">,</span>
+               <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Road Map&quot;</span><span class="p">)</span>
+
+<span class="c1"># set map bounds</span>
+<span class="n">m</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">([[</span><span class="mf">47.25</span><span class="p">,</span> <span class="o">-</span><span class="mi">158</span><span class="p">],</span> <span class="p">[</span><span class="mf">61.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">113.5</span><span class="p">]])</span>
+
+<span class="c1"># add terrain layer</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="s2">&quot;Stamen Terrain&quot;</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Terrain&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># add the native-land overlay</span>
+<span class="c1">#print(type(folium.Popup(list( parse_json[ii].values() )[2][&quot;Name&quot;])))</span>
+
+<span class="c1"># data</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span>
+               <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Territories&quot;</span><span class="p">,</span>
+               <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+               <span class="n">zoom_on_click</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+
+<span class="c1"># loop through the native-land data and load data by creating polygon and popup</span>
+<span class="c1">#for ii in range(0, len(parse_json)):</span>
+<span class="c1">#    try:</span>
+<span class="c1">#      #folium.GeoJson(data,</span>
+<span class="c1">#      #               name=&quot;Territories&quot;).add_to(m)</span>
+<span class="c1">#</span>
+<span class="c1">#      t = folium.GeoJson(list(parse_json[ii].values()))</span>
+<span class="c1">#      t.add_child(folium.Popup(list( parse_json[ii].values() )[2][&quot;Name&quot;]))</span>
+<span class="c1">#      t.add_to(m)</span>
+<span class="c1">#    except:</span>
+<span class="c1">#      pass</span>
+
+<span class="c1"># add the layers to toggle</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># display</span>
+<span class="n">m</span>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 18&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span> tr <span style="color: rgb(98,98,98)">=</span> folium<span style="color: rgb(98,98,98)">.</span>TileLayer(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Stamen Terrain</span><span style="color: rgb(175,0,0)">&#34;</span>,
+<span class="ansi-green-intense-fg ansi-bold">     12</span>                  name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Terrain</span><span style="color: rgb(175,0,0)">&#34;</span>)<span style="color: rgb(98,98,98)">.</span>add_to(m)
+<span class="ansi-green-intense-fg ansi-bold">     14</span> <span style="color: rgb(95,135,135)"># add the native-land overlay</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span> <span style="color: rgb(95,135,135)">#print(type(folium.Popup(list( parse_json[ii].values() )[2][&#34;Name&#34;])))</span>
+<span class="ansi-green-intense-fg ansi-bold">     16</span>
+<span class="ansi-green-intense-fg ansi-bold">     17</span> <span style="color: rgb(95,135,135)"># data</span>
+<span class="ansi-green-fg">---&gt; 18</span> <span class="ansi-yellow-bg">folium</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">GeoJson</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">gdf</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">     19</span> <span class="ansi-yellow-bg">               </span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Territories</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">     20</span> <span class="ansi-yellow-bg">               </span><span class="ansi-yellow-bg">show</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">     21</span> <span class="ansi-yellow-bg">               </span><span class="ansi-yellow-bg">popup</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Test</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">     22</span> <span class="ansi-yellow-bg">               </span><span class="ansi-yellow-bg">zoom_on_click</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>add_to(m)
+<span class="ansi-green-intense-fg ansi-bold">     25</span> <span style="color: rgb(95,135,135)"># loop through the native-land data and load data by creating polygon and popup</span>
+<span class="ansi-green-intense-fg ansi-bold">     26</span> <span style="color: rgb(95,135,135)">#for ii in range(0, len(parse_json)):</span>
+<span class="ansi-green-intense-fg ansi-bold">     27</span> <span style="color: rgb(95,135,135)">#    try:</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">     36</span>
+<span class="ansi-green-intense-fg ansi-bold">     37</span> <span style="color: rgb(95,135,135)"># add the layers to toggle</span>
+<span class="ansi-green-intense-fg ansi-bold">     38</span> folium<span style="color: rgb(98,98,98)">.</span>LayerControl()<span style="color: rgb(98,98,98)">.</span>add_to(m)
+
+File <span class="ansi-green-fg">~/opt/miniconda3/envs/wfrt/lib/python3.9/site-packages/folium/features.py:499</span>, in <span class="ansi-cyan-fg">GeoJson.__init__</span><span class="ansi-blue-fg">(self, data, style_function, highlight_function, name, overlay, control, show, smooth_factor, tooltip, embed, popup, zoom_on_click, marker)</span>
+<span class="ansi-green-intense-fg ansi-bold">    496</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Only Marker, Circle, and CircleMarker are supported as GeoJson marker types.</span><span style="color: rgb(175,0,0)">&#34;</span>)
+<span class="ansi-green-intense-fg ansi-bold">    497</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>marker <span style="color: rgb(98,98,98)">=</span> marker
+<span class="ansi-green-fg">--&gt; 499</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>data <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">process_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    501</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>style <span class="ansi-bold" style="color: rgb(175,0,255)">or</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>highlight:
+<span class="ansi-green-intense-fg ansi-bold">    502</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>convert_to_feature_collection()
+
+File <span class="ansi-green-fg">~/opt/miniconda3/envs/wfrt/lib/python3.9/site-packages/folium/features.py:544</span>, in <span class="ansi-cyan-fg">GeoJson.process_data</span><span class="ansi-blue-fg">(self, data)</span>
+<span class="ansi-green-intense-fg ansi-bold">    542</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> json<span style="color: rgb(98,98,98)">.</span>loads(json<span style="color: rgb(98,98,98)">.</span>dumps(data<span style="color: rgb(98,98,98)">.</span>__geo_interface__))
+<span class="ansi-green-intense-fg ansi-bold">    543</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">--&gt; 544</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Cannot render objects with any missing geometries</span><span style="color: rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">    545</span>                      <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">: </span><span class="ansi-bold" style="color: rgb(175,95,135)">{!r}</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(98,98,98)">.</span>format(data))
+
+<span class="ansi-red-fg">ValueError</span>: Cannot render objects with any missing geometries: id                             d6479d196b7bb5f5408fd83ff93c9e71
+type                                                    Feature
+properties    {&#39;Name&#39;: &#39;Ngemba&#39;, &#39;ID&#39;: 37121, &#39;Slug&#39;: &#39;ngemb...
+geometry      {&#39;coordinates&#39;: [[[145.77743021, -30.71123253]...
+Name: 0, dtype: object
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">49.5236</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.6750</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort out geometry issues</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">shape</span><span class="p">,</span> <span class="n">GeometryCollection</span>
+
+<span class="c1">#with open(data) as f:</span>
+<span class="c1">#  features = json.load(f)[&quot;features&quot;]</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">parse_json</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+
+<span class="c1">#print(df.columns)</span>
+<span class="c1">#print(df.dtypes)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#print(df[&quot;geometry&quot;])</span>
+<span class="c1">#df[&quot;geometry&quot;] = list(df[&quot;geometry&quot;].values())[0]</span>
+<span class="c1">#df[&quot;geometry&quot;] = df[&quot;geometry&quot;].astype(&quot;float&quot;)</span>
+<span class="c1">#df.crs = &quot;epsg:4326&quot;</span>
+<span class="c1">#df.to_crs = {&#39;init&#39; :&#39;epsg:4326&#39;}</span>
+<span class="c1">#print(df.head())</span>
+<span class="c1">#print(df.dtypes)</span>
+
+<span class="n">geo</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">polygon</span><span class="p">:</span> <span class="n">Polygon</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span>
+
+<span class="c1">#print(C)</span>
+
+<span class="c1"># initialize a map</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="o">-</span><span class="mi">122</span><span class="p">],</span>
+               <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+               <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;openstreetmap&quot;</span><span class="p">,</span>
+               <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Road Map&quot;</span><span class="p">)</span>
+
+<span class="n">shapesLayer</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">FeatureGroup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Territories&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+                <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">shapesLayer</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">1</span><span class="p">],</span>
+               <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+               <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+               <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+               <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">shapesLayer</span><span class="p">)</span>
+
+<span class="c1"># display the layer switcher widget</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
 <span class="n">m</span>
+
+<span class="c1"># save the map object to be displayed on the home page</span>
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;canwest_flows.html&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+[[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;head&gt;
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
-
-        &lt;script&gt;
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        &lt;/script&gt;
-
-    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
-    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
-
-            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
-            &lt;style&gt;
-                #map_f83d2c4fee6bd218703e024181fe54f6 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            &lt;/style&gt;
-
-&lt;/head&gt;
-&lt;body&gt;
-
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_f83d2c4fee6bd218703e024181fe54f6&quot; &gt;&lt;/div&gt;
-
-&lt;/body&gt;
-&lt;script&gt;
-
-            var map_f83d2c4fee6bd218703e024181fe54f6 = L.map(
-                &quot;map_f83d2c4fee6bd218703e024181fe54f6&quot;,
-                {
-                    center: [49.5236, -122.675],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 8,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-
-
-
-
-            var tile_layer_e6dcbc127bcd40e56199c1b4cfae3800 = L.tileLayer(
-                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_f83d2c4fee6bd218703e024181fe54f6);
-
-&lt;/script&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 
