@@ -6,9 +6,8 @@
 Canwest-Mountain-Flows
 ==================================================
 
-++++
-include::canwest_flows.html[]
-++++
+.. raw:: html
+    :file: canwest_flows.html
 
 .. math::
 
@@ -17,9 +16,9 @@ include::canwest_flows.html[]
    :caption: Flows:
 
    Map <mymap.ipynb>
-   api
    mymarkdown
    mathmd
+   api
 
 
 Search

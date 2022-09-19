@@ -32,14 +32,13 @@ extensions = ['myst_parser',
               'sphinx.ext.mathjax',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
-              'jupyter_sphinx.execute',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosectionlabel',
               'sphinx_copybutton',
               'nbsphinx'
 ]
-
+#'jupyter_sphinx.execute',
 # mathjax fix
 mathjax_path="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 

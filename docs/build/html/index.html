@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -159,9 +159,9 @@
 <li class="toctree-l1"><a class="reference internal" href="mymap.html">A Markdown cell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymap.html#Pull-Data-from-the-native-land.ca-API">Pull Data from the native-land.ca API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymap.html#Make-the-Map">Make the Map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathmd.html">Inline Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 </ul>
 
 </div>
@@ -189,7 +189,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -197,9 +197,102 @@
         <article role="main">
           <div class="section" id="canwest-mountain-flows">
 <h1>Canwest-Mountain-Flows<a class="headerlink" href="#canwest-mountain-flows" title="Permalink to this headline">#</a></h1>
-<div class="section" id="include-canwest-flows-html">
-<h2>include::canwest_flows.html[]<a class="headerlink" href="#include-canwest-flows-html" title="Permalink to this headline">#</a></h2>
-<div class="math-wrapper docutils container">
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_36874122bf95ec19b18e27986d144441 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_36874122bf95ec19b18e27986d144441" ></div>
+        
+</body>
+<script>    
+    
+            var map_36874122bf95ec19b18e27986d144441 = L.map(
+                "map_36874122bf95ec19b18e27986d144441",
+                {
+                    center: [55.0, -122.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    name: "Road Map",
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_59823c2c94897e642d8cc1d56e5e7d40 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_36874122bf95ec19b18e27986d144441);
+        
+    
+            var feature_group_92bd8f8d0d313f59c2f0f71b206fa9dc = L.featureGroup(
+                {}
+            ).addTo(map_36874122bf95ec19b18e27986d144441);
+        
+    
+            var poly_line_aa9b8add3ec2b2d4556f59f5743aad8e = L.polyline(
+                [[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_92bd8f8d0d313f59c2f0f71b206fa9dc);
+        
+    
+            var polygon_4d9ba4c1e0c886f80d88f898f187b32d = L.polygon(
+                [[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_92bd8f8d0d313f59c2f0f71b206fa9dc);
+        
+    
+            var layer_control_b816cd76221e285965410b40008bace8 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_59823c2c94897e642d8cc1d56e5e7d40,
+                },
+                overlays :  {
+                    "Territories" : feature_group_92bd8f8d0d313f59c2f0f71b206fa9dc,
+                },
+            };
+            L.control.layers(
+                layer_control_b816cd76221e285965410b40008bace8.base_layers,
+                layer_control_b816cd76221e285965410b40008bace8.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_36874122bf95ec19b18e27986d144441);
+        
+</script><div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\]</div>
 </div>
@@ -212,7 +305,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mymap.html#Make-the-Map">Make the Map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mymarkdown.html">Example Markdown</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mymarkdown.html#h2-heading">h2 Heading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mymarkdown.html#horizontal-rules">Horizontal Rules</a></li>
@@ -224,8 +316,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mathmd.html">Inline Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 </ul>
-</div>
 </div>
 </div>
 <div class="section" id="search">
@@ -272,28 +364,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Canwest-Mountain-Flows</a><ul>
-<li><a class="reference internal" href="#include-canwest-flows-html">include::canwest_flows.html[]</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#search">Search</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
