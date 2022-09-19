@@ -230,5 +230,5 @@ folium.LayerControl().add_to(m)
 m
 
 # save the map object to be displayed on the home page
-m.save('canwest_flows.html')
+#m.save('canwest_flows.html')
 # %%

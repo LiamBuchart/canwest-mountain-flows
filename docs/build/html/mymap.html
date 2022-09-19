@@ -761,11 +761,11 @@ Name: 0, dtype: object
 <span class="n">m</span>
 
 <span class="c1"># save the map object to be displayed on the home page</span>
-<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;canwest_flows.html&#39;</span><span class="p">)</span>
+<span class="c1">#m.save(&#39;canwest_flows.html&#39;)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
@@ -773,6 +773,108 @@ Name: 0, dtype: object
 1
 [[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]]
 </pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_28015946155a10d551d8c6beac6833b3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_28015946155a10d551d8c6beac6833b3&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+            var map_28015946155a10d551d8c6beac6833b3 = L.map(
+                &quot;map_28015946155a10d551d8c6beac6833b3&quot;,
+                {
+                    center: [55.0, -122.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    name: &quot;Road Map&quot;,
+                }
+            );
+
+
+
+
+
+            var tile_layer_ded827ea695a8211eb2b7479993bc82f = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_28015946155a10d551d8c6beac6833b3);
+
+
+            var feature_group_7ecdf82ffef0254d060afa471ba3ed9d = L.featureGroup(
+                {}
+            ).addTo(map_28015946155a10d551d8c6beac6833b3);
+
+
+            var poly_line_1cceecca7ca55b2f3f26e6d4fe2ca0b3 = L.polyline(
+                [[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;red&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;red&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 5}
+            ).addTo(feature_group_7ecdf82ffef0254d060afa471ba3ed9d);
+
+
+            var polygon_48d0f3cec52c35af1e6d77579fcdc85b = L.polygon(
+                [[[-121.98348714, 50.079807], [-121.98939303, 50.08141176], [-121.9926059, 50.08191786], [-121.99447525, 50.08457391], [-121.99861452, 50.0842312], [-122.00035034, 50.08688712], [-122.00702659, 50.08765817], [-122.00809479, 50.08534499], [-122.01343579, 50.08457391], [-122.01936523, 50.08502238], [-122.0235045, 50.08527941], [-122.02897903, 50.0887063], [-122.03405297, 50.09410317], [-122.0271801, 50.10080763], [-121.98926508, 50.11117829], [-122.00097413, 50.12047422], [-121.99484082, 50.12619389], [-121.98536207, 50.13084063], [-121.98313177, 50.13512952], [-121.97421059, 50.14299148], [-121.96473184, 50.14191947], [-121.95135007, 50.14620737], [-121.94911978, 50.14978032], [-121.94131374, 50.15371027], [-121.94577433, 50.15728266], [-121.94744705, 50.16442665], [-121.93908345, 50.16799824], [-121.93406528, 50.16442665], [-121.90061086, 50.16228356], [-121.89615027, 50.16799824], [-121.89447755, 50.17371223], [-121.88890181, 50.17692605], [-121.90562902, 50.19156406], [-121.89057453, 50.19941675], [-121.8827685, 50.19870292], [-121.87552004, 50.20477011], [-121.86492614, 50.20584071], [-121.84209767, 50.20300343], [-121.81700685, 50.19657908], [-121.80697052, 50.18979688], [-121.79358875, 50.18158557], [-121.78522515, 50.1762296], [-121.76236462, 50.17587252], [-121.75567374, 50.18015737], [-121.74563741, 50.18051442], [-121.73169807, 50.17801499], [-121.65255825, 50.15434796], [-121.62469542, 50.13554803], [-121.57159727, 50.14536097], [-121.57102467, 50.14071159], [-121.50504838, 50.14214995], [-121.47726261, 50.12262294], [-121.45383503, 50.11125424], [-121.44964348, 50.0805227], [-121.47559941, 50.08780933], [-121.50461859, 50.07702104], [-121.54745425, 50.07582079], [-121.5408197, 50.05231945], [-121.62899705, 50.04988274], [-121.66165356, 50.06568481], [-121.66240746, 50.08070784], [-121.70617561, 50.07565095], [-121.7172567, 50.08785869], [-121.75525654, 50.09315759], [-121.84957288, 50.07636784], [-121.86669465, 50.04774476], [-121.90786015, 50.05171893], [-121.91084622, 50.05371193], [-121.90972486, 50.05738318], [-121.91457679, 50.06112955], [-121.91382537, 50.06334845], [-121.92035068, 50.07078251], [-121.92611997, 50.07234904], [-121.9371875, 50.07487774], [-121.9381899, 50.07713697], [-121.93966928, 50.07847787], [-121.94405902, 50.07932294], [-121.95035669, 50.07833143], [-121.94794937, 50.08453287], [-121.94935794, 50.0870615], [-121.95553637, 50.09066127], [-121.95837589, 50.09058868], [-121.95901923, 50.08647725], [-121.96704184, 50.08216855], [-121.9749391, 50.08361269], [-121.98348714, 50.079807]]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;orange&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;orange&quot;, &quot;fillOpacity&quot;: 0.4, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 5}
+            ).addTo(feature_group_7ecdf82ffef0254d060afa471ba3ed9d);
+
+
+            var layer_control_00cfc9a13f8175e77fa983a824fa92fb = {
+                base_layers : {
+                    &quot;openstreetmap&quot; : tile_layer_ded827ea695a8211eb2b7479993bc82f,
+                },
+                overlays :  {
+                    &quot;Territories&quot; : feature_group_7ecdf82ffef0254d060afa471ba3ed9d,
+                },
+            };
+            L.control.layers(
+                layer_control_00cfc9a13f8175e77fa983a824fa92fb.base_layers,
+                layer_control_00cfc9a13f8175e77fa983a824fa92fb.overlays,
+                {&quot;autoZIndex&quot;: true, &quot;collapsed&quot;: true, &quot;position&quot;: &quot;topright&quot;}
+            ).addTo(map_28015946155a10d551d8c6beac6833b3);
+
+&lt;/script&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
