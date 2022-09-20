@@ -20,7 +20,7 @@ import geojson
 # # Pull Data from the native-land.ca API
 # Territory and Name overlays come from Native Land Digital 
 # ---
-# [blue_text](native-land.ca)
+# `native-land.ca <native-land.ca>`_
 
 # %%
 url = "https://native-land.ca/wp-json/nativeland/v1/api/index.php"
@@ -174,61 +174,49 @@ m
 
 # %%
 # sort out geometry issues
-import matplotlib.pyplot as plt
-from shapely.geometry import shape, GeometryCollection
+from shapely.geometry import shape
 
-#with open(data) as f:
-#  features = json.load(f)["features"]
-num = 1
-print(num)
-df = pd.DataFrame(parse_json)
-df = df.iloc[num]
-
-#print(df.columns)
-#print(df.dtypes)
-df["geometry"] = list(df["geometry"].values())[0]
-#print(df["geometry"])
-#df["geometry"] = list(df["geometry"].values())[0]
-#df["geometry"] = df["geometry"].astype("float")
-#df.crs = "epsg:4326"
-#df.to_crs = {'init' :'epsg:4326'}
-#print(df.head())
-#print(df.dtypes)
-
-geo: dict = {"type": "Polygon",
-             "coordinates": df["geometry"]}
-
-print(list(geo.values())[1])
-polygon: Polygon = shape(geo)
-
-C = polygon.exterior.coords.xy
-
-#print(C)
-
+df_m = pd.DataFrame(parse_json)
 # initialize a map
 m = folium.Map(location=[55, -122], 
                zoom_start=4, 
-               tiles="openstreetmap",
-               name="Road Map")
+               tiles="Stamen Terrain",
+               name="Terrain")
 
 shapesLayer = folium.FeatureGroup(name="Territories").add_to(m)
+popupLayer = folium.FeatureGroup(name="Names").add_to(m)
 
-folium.PolyLine(list(geo.values())[1],
-                color="red",
-                weight=5).add_to(shapesLayer)
+for ii in range( (len(df_m)-1) ):
+  print(ii)
+  df = df_m.iloc[ii]
+  nn = list(df["properties"].values())[0]
 
-folium.Polygon(list(geo.values())[1],
-               color="orange",
-               weight=5,
-               fill=True,
-               fill_color="orange",
-               fill_opacity=0.4).add_to(shapesLayer)
+  df["geometry"] = list(df["geometry"].values())[0]
+
+  geo: dict = {"type": "Polygon",
+               "coordinates": df["geometry"]}
+  try: 
+    polygon: Polygon = shape(geo)
+    x, y = polygon.exterior.coords.xy
+
+    folium.GeoJson(polygon,
+                   zoom_on_click=True).add_to(shapesLayer)
+
+    folium.CircleMarker(location=[np.mean(y), np.mean(x)],
+                        zoom_on_click=True,
+                        radius=2,
+                        color="orange", 
+                        fill_color="orange",
+                        popup=str(nn)).add_to(popupLayer)
+    
+  except:
+    pass
 
 # display the layer switcher widget
 folium.LayerControl().add_to(m)
 
 m
 
-# save the map object to be displayed on the home page
-#m.save('canwest_flows.html')
 # %%
+# save the map object to be displayed on the home page
+m.save('canwest_flows.html')
