@@ -63,10 +63,10 @@ params = {
 response_API = requests.get(url=url, params=params)
 data = response_API.text
 
-#p convert to json
+#convert to json
 parse_json = json.loads(data)
 
-# make a geojson (note used currently)
+# make a geojson (not used currently)
 territory = {
              "type": "FeatureCollection",
              "features": response_API
@@ -77,7 +77,6 @@ territory = {
 # # Make the Map
 
 # %%
-# sort out geometry issues
 # dataframe of the json
 df_m = pd.DataFrame(parse_json)
 
@@ -130,4 +129,3 @@ m
 # %%
 # save the map object to be displayed on the home page
 m.save('canwest_flows.html')
-# %%
