@@ -1,10 +1,10 @@
-# Juan De Fuca
+## Juan De Fuca
 
 ### Location:
 
 Gap winds in the Strait of Juan de Fuca occur throughout the strait located at the southern end of Vancouver Island in British Columbia, Canada and north of the Olympic Penninsual in Washington, USA.
 
-> Approximate Location: {math}`48.75^{\circ} N -124^{\circ} W`
+> Approximate Location: {math}`48.75^{\circ} N, 124^{\circ} W`
 
 #### Impacted Populations
 
