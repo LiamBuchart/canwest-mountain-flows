@@ -1,10 +1,9 @@
 # %% [markdown]
 # Download Data and Make Map
 # ---
-### Pull polygons from the native-land.ca API
-### Territory and Name overlays come from Native Land Digital 
+# > Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital 
 # ---
-# [blue_text](native-land.ca)
+# [Native Land Digital](https://native-land.ca/)
 
 #%%
 # Imports
@@ -131,4 +130,7 @@ m
 
 # %%
 # save the map object to be displayed on the home page
-m.save('canwest_flows.html')
+path = "/Users/lbuchart/Documents/canwest-mountain-flows/docs/source/_static/"
+m.save(path + "canwest_flows.html")
+
+# %%
