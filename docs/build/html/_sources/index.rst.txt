@@ -11,11 +11,15 @@ Canwest-Mountain-Flows
 
 .. math::
 
+Welcome to Canwest-Mountain-Flows
+=================================
+
 .. toctree::
    :maxdepth: 2
    :caption: Flows:
 
-   Map <mymap.ipynb>
+   Flow Map <mymap.ipynb>
+   juandefuca
    mymarkdown
    mathmd
    api

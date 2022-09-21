@@ -1,4 +1,6 @@
 # %% [markdown]
+# # Download Data and Make Map
+# ---
 # # Pull Data from the native-land.ca API
 # Territory and Name overlays come from Native Land Digital 
 # ---
@@ -72,9 +74,6 @@ territory = {
              "features": response_API
 }
 
-
-#%% [markdown]
-# # Make the Map
 
 # %%
 # dataframe of the json
