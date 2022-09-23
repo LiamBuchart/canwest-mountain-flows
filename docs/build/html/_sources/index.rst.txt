@@ -8,7 +8,7 @@ Canwest-Mountain-Flows
 
 .. raw:: html
 
-   <iframe src="_static/canwest_flows.html"></iframe>
+   <iframe src="_static/canwest_flows.html" height="500px" width="100%"></iframe>
 
 .. toctree::
    :maxdepth: 2
