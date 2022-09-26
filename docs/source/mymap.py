@@ -1,7 +1,7 @@
 # %% [markdown]
 # Download Data and Make Map
 # ---
-# > Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital 
+## Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital 
 # ---
 # [Native Land Digital](https://native-land.ca/)
 
@@ -17,10 +17,9 @@ from shapely.geometry import shape
 import requests
 import json
 
-#%% [markdown]
-### api URL
 
 #%%
+# API URL
 url = "https://native-land.ca/wp-json/nativeland/v1/api/index.php"
 
 # parameters of the download
@@ -65,6 +64,7 @@ params = {
 ### download and convert to json
 
 #%%
+# download and convert to json
 response_API = requests.get(url=url, params=params)
 data = response_API.text
 
