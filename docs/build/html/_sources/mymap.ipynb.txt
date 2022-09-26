@@ -2,20 +2,21 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "4e1c4465",
+   "id": "46bba46d",
    "metadata": {},
    "source": [
-    "Download Data and Make Map\n",
+    "Creating The Map\n",
     "---\n",
-    "# Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital \n",
+    "## Downloading Data: <br>\n",
+    "## Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital <br>\n",
     "---\n",
-    "[Native Land Digital](https://native-land.ca/)"
+    "## [Native Land Digital](https://native-land.ca/)"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "25179668",
+   "id": "3ab43a4d",
    "metadata": {
     "lines_to_next_cell": 2
    },
@@ -36,10 +37,8 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "e346c511",
-   "metadata": {
-    "lines_to_next_cell": 2
-   },
+   "id": "9eee315c",
+   "metadata": {},
    "outputs": [],
    "source": [
     "# API URL\n",
@@ -84,20 +83,10 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "4acbf81c",
-   "metadata": {},
-   "source": [
-    "## download and convert to json"
-   ]
-  },
-  {
    "cell_type": "code",
    "execution_count": null,
-   "id": "54d21e7d",
-   "metadata": {
-    "lines_to_next_cell": 2
-   },
+   "id": "96340ceb",
+   "metadata": {},
    "outputs": [],
    "source": [
     "# download and convert to json\n",
@@ -117,7 +106,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "01df0fa6",
+   "id": "d0a91332",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -174,7 +163,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "eff76b56",
+   "id": "00bb9f29",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -186,7 +175,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "6e2fbb9f",
+   "id": "064a9937",
    "metadata": {},
    "outputs": [],
    "source": []

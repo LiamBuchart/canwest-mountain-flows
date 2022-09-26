@@ -1,10 +1,9 @@
 # %% [markdown]
-# Creating The Map
+# Creating The Map <br>
 ---
-### Downloading Data: <br>
-### Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital <br>
----
-### [Native Land Digital](https://native-land.ca/)
+# - Downloading Data: <br>
+# - Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital <br>
+# -  [Native Land Digital](https://native-land.ca/)
 
 #%%
 # Imports
