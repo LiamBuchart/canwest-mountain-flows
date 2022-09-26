@@ -1,9 +1,9 @@
 # %% [markdown]
 # Download Data and Make Map
-# ---
-## Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital 
-# ---
-# [Native Land Digital](https://native-land.ca/)
+---
+### Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital 
+---
+### [Native Land Digital](https://native-land.ca/)
 
 #%%
 # Imports
@@ -59,10 +59,6 @@ params = {
 }    
 }
 
-
-#%% [markdown] 
-### download and convert to json
-
 #%%
 # download and convert to json
 response_API = requests.get(url=url, params=params)
@@ -76,7 +72,6 @@ territory = {
              "type": "FeatureCollection",
              "features": response_API
 }
-
 
 #%%
 # dataframe of the json
