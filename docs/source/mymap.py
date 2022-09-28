@@ -1,9 +1,9 @@
 # %% [markdown]
 # Creating The Map <br>
 ===
-> Downloading Data: <br>
-> Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital <br>
->  [Native Land Digital](https://native-land.ca/)
+> Downloading Data:  
+> Pull polygons from the native-land.ca API Territory and Name overlays come from Native Land Digital <br>  
+> [Native Land Digital](https://native-land.ca/)  
 
 #%%
 # Imports
@@ -17,6 +17,7 @@ from shapely.geometry import shape
 import requests
 import json
 
+from add_flows import pldf
 
 #%%
 # API URL
@@ -77,6 +78,7 @@ territory = {
 # dataframe of the json
 df_m = pd.DataFrame(parse_json)
 
+#%%
 # initialize a map
 m = folium.Map(location=[55, -122], 
                zoom_start=4, 
@@ -117,6 +119,22 @@ for ii in range( (len(df_m)-1) ):
     
   except:
     pass
+
+# add layers for the flow locations and polygons (from the imported dataframe)
+fpLayer = folium.FeatureGroup("Mountain Flow Points",
+                              show=False).add_to(m)
+fpolyLayer = folium.FeatureGroup("Mountain Flow Area",
+                              show=False).add_to(m) 
+
+colors = {"gap": "blue", "downslope": "red"}  # colors for different type of flow
+
+pldf.apply(lambda row:folium.Marker(location=[row["Latitude"], row["Longitude"]],
+                                    radius=10,
+                                    fill_color=colors[row['type']],
+                                    popup="<a https://liambuchart.github.io/canwest-mountain-flows/build/html/juandefuca.html > Juan de Fuca <a/>",
+                                    ).add_to(fpLayer),
+          axis=1
+          )                                                  
 
 # display the layer switcher widget
 folium.LayerControl().add_to(m)
