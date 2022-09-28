@@ -131,7 +131,7 @@ colors = {"gap": "blue", "downslope": "red"}  # colors for different type of flo
 pldf.apply(lambda row:folium.Marker(location=[row["Latitude"], row["Longitude"]],
                                     radius=10,
                                     fill_color=colors[row['type']],
-                                    popup="<a https://liambuchart.github.io/canwest-mountain-flows/build/html/juandefuca.html > Juan de Fuca <a/>",
+                                    popup="<a href=https://liambuchart.github.io/canwest-mountain-flows/build/html/juandefuca.html > Juan de Fuca <a/>",
                                     ).add_to(fpLayer),
           axis=1
           )                                                  
